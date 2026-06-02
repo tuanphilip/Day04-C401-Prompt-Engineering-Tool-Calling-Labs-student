@@ -1,0 +1,35 @@
+{
+  "transcript_id": "v3_openrouter_web_20260602T141522251352",
+  "version": "v3",
+  "artifact_version": "v3+p575c57ef8434+t67c6e3325411",
+  "prompt_hash": "575c57ef8434b77793a833c6af2e59cdac775f72e30212fa113ab4970cc6b9cf",
+  "tools_hash": "67c6e33254114ffae0eaa2687a33b6fe7d4f2bce7bbd65381f4dc494a839e2c6",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "D:\\VinAI-Lab\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\VinAI-Lab\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T14:15:22",
+  "updated_at": "2026-06-02T14:15:27",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T14:15:22",
+      "user": "xin chào",
+      "status": "answered",
+      "assistant_text": "Xin chào! Bạn cần giúp gì hôm nay?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Xin chào! Bạn cần giúp gì hôm nay?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-06-02T14:15:27"
+    }
+  ],
+  "source": "web_app"
+}

@@ -33,7 +33,11 @@ class OpenAIProvider:
         try:
             from openai import OpenAI
         except ImportError as exc:
-            raise RuntimeError("Install live provider dependency first: pip install openai") from exc
+            raise RuntimeError(
+                "OpenAI provider dependency failed to import. Run "
+                "`python -m pip install --force-reinstall -r requirements.txt` "
+                f"in the active environment. Import error: {exc}"
+            ) from exc
 
         api_key = os.getenv(self.api_key_env)
         if not api_key:

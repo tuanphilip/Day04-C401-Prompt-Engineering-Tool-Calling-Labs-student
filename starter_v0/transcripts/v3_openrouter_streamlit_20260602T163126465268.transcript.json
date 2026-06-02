@@ -1,0 +1,382 @@
+{
+  "transcript_id": "v3_openrouter_streamlit_20260602T163126465268",
+  "version": "v3",
+  "artifact_version": "v3+p575c57ef8434+t67c6e3325411",
+  "prompt_hash": "575c57ef8434b77793a833c6af2e59cdac775f72e30212fa113ab4970cc6b9cf",
+  "tools_hash": "67c6e33254114ffae0eaa2687a33b6fe7d4f2bce7bbd65381f4dc494a839e2c6",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "D:\\VinAI-Lab\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\VinAI-Lab\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-06-02T16:31:26",
+  "updated_at": "2026-06-02T16:32:50",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-06-02T16:31:26",
+      "user": "xin chào",
+      "status": "answered",
+      "assistant_text": "Xin chào! Bạn cần giúp gì hôm nay?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Xin chào! Bạn cần giúp gì hôm nay?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-06-02T16:31:28"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-06-02T16:31:47",
+      "user": "bài post mới nhất trên X",
+      "status": "answered",
+      "assistant_text": "Bạn có thể cho tôi biết tài khoản nào mà bạn muốn xem bài post mới nhất trên X không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Bạn có thể cho tôi biết tài khoản nào mà bạn muốn xem bài post mới nhất trên X không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "ended_at": "2026-06-02T16:31:49"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-06-02T16:31:57",
+      "user": "elonmusk",
+      "status": "answered",
+      "assistant_text": "Hiện tại, tôi không thể truy cập vào bài post mới nhất từ tài khoản Elon Musk trên X (Twitter). Có thể có vấn đề với quyền truy cập. Bạn có muốn tìm kiếm thông tin khác không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "elonmusk",
+                "limit": 1
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "elonmusk",
+                "limit": 1
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "error": "HTTPError",
+                "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=elonmusk"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hiện tại, tôi không thể truy cập vào bài post mới nhất từ tài khoản Elon Musk trên X (Twitter). Có thể có vấn đề với quyền truy cập. Bạn có muốn tìm kiếm thông tin khác không?",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "elonmusk",
+            "limit": 1
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "error": "HTTPError",
+            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=elonmusk"
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:32:01"
+    },
+    {
+      "turn_index": 4,
+      "started_at": "2026-06-02T16:32:37",
+      "user": "tìm kiếm bài báo về AI trên arXiv ",
+      "status": "answered",
+      "assistant_text": "Dưới đây là một số bài báo về AI trên arXiv:\n\n1. **[AI prediction leads people to forgo guaranteed rewards](http://arxiv.org/abs/2603.28944v1)**\n   - **Tác giả:** Aoi Naito, Hirokazu Shirado\n   - **Tóm tắt:** Nghiên cứu cho thấy AI có thể thay đổi cách mọi người quyết định, dẫn đến việc từ bỏ phần thưởng đảm bảo. Hơn 40% người tham gia coi AI như một quyền lực dự đoán, làm tăng khả năng từ bỏ phần thưởng lên 3.39 lần.\n   - **Ngày xuất bản:** 30 tháng 3, 2026\n   - **[PDF](https://arxiv.org/pdf/2603.28944v1)**\n\n2. **[Foundations of GenIR](http://arxiv.org/abs/2501.02842v1)**\n   - **Tác giả:** Qingyao Ai, Jingtao Zhan, Yiqun Liu\n   - **Tóm tắt:** Bài viết thảo luận về tác động của các mô hình AI sinh sinh đối với hệ thống truy cập thông tin, giới thiệu các khái niệm như tạo thông tin và tổng hợp thông tin.\n   - **Ngày xuất bản:** 6 tháng 1, 2025\n   - **[PDF](https://arxiv.org/pdf/2501.02842v1)**\n\n3. **[Competing Visions of Ethical AI: A Case Study of OpenAI](http://arxiv.org/abs/2601.16513v1)**\n   - **Tác giả:** Melissa Wilfley, Mengting Ai, Madelyn Rose Sanfilippo\n   - **Tóm tắt:** Nghiên cứu phân tích diễn ngôn về đạo đức AI của OpenAI, cho thấy sự thống trị của diễn ngôn về an toàn và rủi ro trong giao tiếp công khai.\n   - **Ngày xuất bản:** 23 tháng 1, 2026\n   - **[PDF](https://arxiv.org/pdf/2601.16513v1)**\n\n4. **[Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI](http://arxiv.org/abs/2308.12400v1)**\n   - **Tác giả:** Gerardo Adesso\n   - **Tóm tắt:** Bài viết trình bày cách sử dụng ChatGPT để khám phá phát hiện khoa học, cho thấy tiềm năng hợp tác giữa con người và AI trong nghiên cứu khoa học.\n   - **Ngày xuất bản:** 8 tháng 7, 2023\n   - **[PDF](https://arxiv.org/pdf/2308.12400v1)**\n\n5. **[Meaningful human control: actionable properties for AI system development](http://arxiv.org/abs/2112.01298v2)**\n   - **Tác giả:** Luciano Cavalcante Siebert, Maria Luce Lupetti, và nhiều tác giả khác\n   - **Tóm tắt:** Bài viết đề xuất bốn thuộc tính có thể hành động để đảm bảo con người vẫn kiểm soát được các hệ thống AI, nhằm giảm thiểu khoảng trống trách nhiệm.\n   - **Ngày xuất bản:** 25 tháng 11, 2021\n   - **[PDF](https://arxiv.org/pdf/2112.01298v2)**\n\nNếu bạn cần thêm thông tin hoặc tìm kiếm bài báo khác, hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "AI",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "AI",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "AI",
+                "api_query": "all:AI",
+                "total_results": 58511,
+                "items": [
+                  {
+                    "arxiv_id": "2603.28944v1",
+                    "title": "AI prediction leads people to forgo guaranteed rewards",
+                    "summary": "Artificial intelligence (AI) is understood to affect the content of people's decisions. Here, using a behavioral implementation of the classic Newcomb's paradox in 1,305 participants, we show that AI can also change how people decide. In this paradigm, belief in predictive authority can lead individuals to constrain decision-making, forgoing a guaranteed reward. Over 40% of participants treated AI as such a predictive authority. This significantly increased the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI: 2.45-4.70) compared with random framing, and reduced earnings by 10.7-42.9%. The effect appeared across AI presentations and decision contexts and persisted even when predictions failed. When people believe AI can predict their behavior, they may self-constrain it in anticipation of that prediction.",
+                    "authors": [
+                      "Aoi Naito",
+                      "Hirokazu Shirado"
+                    ],
+                    "published": "2026-03-30T19:36:10Z",
+                    "updated": "2026-03-30T19:36:10Z",
+                    "url": "http://arxiv.org/abs/2603.28944v1",
+                    "pdf_url": "https://arxiv.org/pdf/2603.28944v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.HC",
+                    "categories": [
+                      "cs.HC"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2501.02842v1",
+                    "title": "Foundations of GenIR",
+                    "summary": "The chapter discusses the foundational impact of modern generative AI models on information access (IA) systems. In contrast to traditional AI, the large-scale training and superior data modeling of generative AI models enable them to produce high-quality, human-like responses, which brings brand new opportunities for the development of IA paradigms. In this chapter, we identify and introduce two of them in details, i.e., information generation and information synthesis. Information generation allows AI to create tailored content addressing user needs directly, enhancing user experience with immediate, relevant outputs. Information synthesis leverages the ability of generative AI to integrate and reorganize existing information, providing grounded responses and mitigating issues like model hallucination, which is particularly valuable in scenarios requiring precision and external knowledge. This chapter delves into the foundational aspects of generative models, including architecture, scaling, and training, and discusses their applications in multi-modal scenarios. Additionally, it examines the retrieval-augmented generation paradigm and other methods for corpus modeling and understanding, demonstrating how generative AI can enhance information access systems. It also summarizes potential challenges and fruitful directions for future studies.",
+                    "authors": [
+                      "Qingyao Ai",
+                      "Jingtao Zhan",
+                      "Yiqun Liu"
+                    ],
+                    "published": "2025-01-06T08:38:29Z",
+                    "updated": "2025-01-06T08:38:29Z",
+                    "url": "http://arxiv.org/abs/2501.02842v1",
+                    "pdf_url": "https://arxiv.org/pdf/2501.02842v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.IR",
+                    "categories": [
+                      "cs.IR",
+                      "cs.LG"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2601.16513v1",
+                    "title": "Competing Visions of Ethical AI: A Case Study of OpenAI",
+                    "summary": "Introduction. AI Ethics is framed distinctly across actors and stakeholder groups. We report results from a case study of OpenAI analysing ethical AI discourse. Method. Research addressed: How has OpenAI's public discourse leveraged 'ethics', 'safety', 'alignment' and adjacent related concepts over time, and what does discourse signal about framing in practice? A structured corpus, differentiating between communication for a general audience and communication with an academic audience, was assembled from public documentation. Analysis. Qualitative content analysis of ethical themes combined inductively derived and deductively applied codes. Quantitative analysis leveraged computational content analysis methods via NLP to model topics and quantify changes in rhetoric over time. Visualizations report aggregate results. For reproducible results, we have released our code at https://github.com/famous-blue-raincoat/AI_Ethics_Discourse. Results. Results indicate that safety and risk discourse dominate OpenAI's public communication and documentation, without applying academic and advocacy ethics frameworks or vocabularies. Conclusions. Implications for governance are presented, along with discussion of ethics-washing practices in industry.",
+                    "authors": [
+                      "Melissa Wilfley",
+                      "Mengting Ai",
+                      "Madelyn Rose Sanfilippo"
+                    ],
+                    "published": "2026-01-23T07:26:45Z",
+                    "updated": "2026-01-23T07:26:45Z",
+                    "url": "http://arxiv.org/abs/2601.16513v1",
+                    "pdf_url": "https://arxiv.org/pdf/2601.16513v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CY",
+                    "categories": [
+                      "cs.CY"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2308.12400v1",
+                    "title": "Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI",
+                    "summary": "This paper presents a novel approach to scientific discovery using an artificial intelligence (AI) environment known as ChatGPT, developed by OpenAI. This is the first paper entirely generated with outputs from ChatGPT. We demonstrate how ChatGPT can be instructed through a gamification environment to define and benchmark hypothetical physical theories. Through this environment, ChatGPT successfully simulates the creation of a new improved model, called GPT$^4$, which combines the concepts of GPT in AI (generative pretrained transformer) and GPT in physics (generalized probabilistic theory). We show that GPT$^4$ can use its built-in mathematical and statistical capabilities to simulate and analyze physical laws and phenomena. As a demonstration of its language capabilities, GPT$^4$ also generates a limerick about itself. Overall, our results demonstrate the promising potential for human-AI collaboration in scientific discovery, as well as the importance of designing systems that effectively integrate AI's capabilities with human intelligence.",
+                    "authors": [
+                      "Gerardo Adesso"
+                    ],
+                    "published": "2023-07-08T09:59:22Z",
+                    "updated": "2023-07-08T09:59:22Z",
+                    "url": "http://arxiv.org/abs/2308.12400v1",
+                    "pdf_url": "https://arxiv.org/pdf/2308.12400v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.OH",
+                    "categories": [
+                      "cs.OH"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2112.01298v2",
+                    "title": "Meaningful human control: actionable properties for AI system development",
+                    "summary": "How can humans remain in control of artificial intelligence (AI)-based systems designed to perform tasks autonomously? Such systems are increasingly ubiquitous, creating benefits - but also undesirable situations where moral responsibility for their actions cannot be properly attributed to any particular person or group. The concept of meaningful human control has been proposed to address responsibility gaps and mitigate them by establishing conditions that enable a proper attribution of responsibility for humans; however, clear requirements for researchers, designers, and engineers are yet inexistent, making the development of AI-based systems that remain under meaningful human control challenging. In this paper, we address the gap between philosophical theory and engineering practice by identifying, through an iterative process of abductive thinking, four actionable properties for AI-based systems under meaningful human control, which we discuss making use of two applications scenarios: automated vehicles and AI-based hiring. First, a system in which humans and AI algorithms interact should have an explicitly defined domain of morally loaded situations within which the system ought to operate. Second, humans and AI agents within the system should have appropriate and mutually compatible representations. Third, responsibility attributed to a human should be commensurate with that human's ability and authority to control the system. Fourth, there should be explicit links between the actions of the AI agents and actions of humans who are aware of their moral responsibility. We argue that these four properties will support practically-minded professionals to take concrete steps toward designing and engineering for AI systems that facilitate meaningful human control.",
+                    "authors": [
+                      "Luciano Cavalcante Siebert",
+                      "Maria Luce Lupetti",
+                      "Evgeni Aizenberg",
+                      "Niek Beckers",
+                      "Arkady Zgonnikov",
+                      "Herman Veluwenkamp",
+                      "David Abbink",
+                      "Elisa Giaccardi",
+                      "Geert-Jan Houben",
+                      "Catholijn M. Jonker",
+                      "Jeroen van den Hoven",
+                      "Deborah Forster",
+                      "Reginald L. Lagendijk"
+                    ],
+                    "published": "2021-11-25T11:05:37Z",
+                    "updated": "2022-05-19T15:28:01Z",
+                    "url": "http://arxiv.org/abs/2112.01298v2",
+                    "pdf_url": "https://arxiv.org/pdf/2112.01298v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CY",
+                    "categories": [
+                      "cs.CY",
+                      "cs.AI"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là một số bài báo về AI trên arXiv:\n\n1. **[AI prediction leads people to forgo guaranteed rewards](http://arxiv.org/abs/2603.28944v1)**\n   - **Tác giả:** Aoi Naito, Hirokazu Shirado\n   - **Tóm tắt:** Nghiên cứu cho thấy AI có thể thay đổi cách mọi người quyết định, dẫn đến việc từ bỏ phần thưởng đảm bảo. Hơn 40% người tham gia coi AI như một quyền lực dự đoán, làm tăng khả năng từ bỏ phần thưởng lên 3.39 lần.\n   - **Ngày xuất bản:** 30 tháng 3, 2026\n   - **[PDF](https://arxiv.org/pdf/2603.28944v1)**\n\n2. **[Foundations of GenIR](http://arxiv.org/abs/2501.02842v1)**\n   - **Tác giả:** Qingyao Ai, Jingtao Zhan, Yiqun Liu\n   - **Tóm tắt:** Bài viết thảo luận về tác động của các mô hình AI sinh sinh đối với hệ thống truy cập thông tin, giới thiệu các khái niệm như tạo thông tin và tổng hợp thông tin.\n   - **Ngày xuất bản:** 6 tháng 1, 2025\n   - **[PDF](https://arxiv.org/pdf/2501.02842v1)**\n\n3. **[Competing Visions of Ethical AI: A Case Study of OpenAI](http://arxiv.org/abs/2601.16513v1)**\n   - **Tác giả:** Melissa Wilfley, Mengting Ai, Madelyn Rose Sanfilippo\n   - **Tóm tắt:** Nghiên cứu phân tích diễn ngôn về đạo đức AI của OpenAI, cho thấy sự thống trị của diễn ngôn về an toàn và rủi ro trong giao tiếp công khai.\n   - **Ngày xuất bản:** 23 tháng 1, 2026\n   - **[PDF](https://arxiv.org/pdf/2601.16513v1)**\n\n4. **[Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI](http://arxiv.org/abs/2308.12400v1)**\n   - **Tác giả:** Gerardo Adesso\n   - **Tóm tắt:** Bài viết trình bày cách sử dụng ChatGPT để khám phá phát hiện khoa học, cho thấy tiềm năng hợp tác giữa con người và AI trong nghiên cứu khoa học.\n   - **Ngày xuất bản:** 8 tháng 7, 2023\n   - **[PDF](https://arxiv.org/pdf/2308.12400v1)**\n\n5. **[Meaningful human control: actionable properties for AI system development](http://arxiv.org/abs/2112.01298v2)**\n   - **Tác giả:** Luciano Cavalcante Siebert, Maria Luce Lupetti, và nhiều tác giả khác\n   - **Tóm tắt:** Bài viết đề xuất bốn thuộc tính có thể hành động để đảm bảo con người vẫn kiểm soát được các hệ thống AI, nhằm giảm thiểu khoảng trống trách nhiệm.\n   - **Ngày xuất bản:** 25 tháng 11, 2021\n   - **[PDF](https://arxiv.org/pdf/2112.01298v2)**\n\nNếu bạn cần thêm thông tin hoặc tìm kiếm bài báo khác, hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "AI",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "AI",
+            "api_query": "all:AI",
+            "total_results": 58511,
+            "items": [
+              {
+                "arxiv_id": "2603.28944v1",
+                "title": "AI prediction leads people to forgo guaranteed rewards",
+                "summary": "Artificial intelligence (AI) is understood to affect the content of people's decisions. Here, using a behavioral implementation of the classic Newcomb's paradox in 1,305 participants, we show that AI can also change how people decide. In this paradigm, belief in predictive authority can lead individuals to constrain decision-making, forgoing a guaranteed reward. Over 40% of participants treated AI as such a predictive authority. This significantly increased the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI: 2.45-4.70) compared with random framing, and reduced earnings by 10.7-42.9%. The effect appeared across AI presentations and decision contexts and persisted even when predictions failed. When people believe AI can predict their behavior, they may self-constrain it in anticipation of that prediction.",
+                "authors": [
+                  "Aoi Naito",
+                  "Hirokazu Shirado"
+                ],
+                "published": "2026-03-30T19:36:10Z",
+                "updated": "2026-03-30T19:36:10Z",
+                "url": "http://arxiv.org/abs/2603.28944v1",
+                "pdf_url": "https://arxiv.org/pdf/2603.28944v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.HC",
+                "categories": [
+                  "cs.HC"
+                ]
+              },
+              {
+                "arxiv_id": "2501.02842v1",
+                "title": "Foundations of GenIR",
+                "summary": "The chapter discusses the foundational impact of modern generative AI models on information access (IA) systems. In contrast to traditional AI, the large-scale training and superior data modeling of generative AI models enable them to produce high-quality, human-like responses, which brings brand new opportunities for the development of IA paradigms. In this chapter, we identify and introduce two of them in details, i.e., information generation and information synthesis. Information generation allows AI to create tailored content addressing user needs directly, enhancing user experience with immediate, relevant outputs. Information synthesis leverages the ability of generative AI to integrate and reorganize existing information, providing grounded responses and mitigating issues like model hallucination, which is particularly valuable in scenarios requiring precision and external knowledge. This chapter delves into the foundational aspects of generative models, including architecture, scaling, and training, and discusses their applications in multi-modal scenarios. Additionally, it examines the retrieval-augmented generation paradigm and other methods for corpus modeling and understanding, demonstrating how generative AI can enhance information access systems. It also summarizes potential challenges and fruitful directions for future studies.",
+                "authors": [
+                  "Qingyao Ai",
+                  "Jingtao Zhan",
+                  "Yiqun Liu"
+                ],
+                "published": "2025-01-06T08:38:29Z",
+                "updated": "2025-01-06T08:38:29Z",
+                "url": "http://arxiv.org/abs/2501.02842v1",
+                "pdf_url": "https://arxiv.org/pdf/2501.02842v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.IR",
+                "categories": [
+                  "cs.IR",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "2601.16513v1",
+                "title": "Competing Visions of Ethical AI: A Case Study of OpenAI",
+                "summary": "Introduction. AI Ethics is framed distinctly across actors and stakeholder groups. We report results from a case study of OpenAI analysing ethical AI discourse. Method. Research addressed: How has OpenAI's public discourse leveraged 'ethics', 'safety', 'alignment' and adjacent related concepts over time, and what does discourse signal about framing in practice? A structured corpus, differentiating between communication for a general audience and communication with an academic audience, was assembled from public documentation. Analysis. Qualitative content analysis of ethical themes combined inductively derived and deductively applied codes. Quantitative analysis leveraged computational content analysis methods via NLP to model topics and quantify changes in rhetoric over time. Visualizations report aggregate results. For reproducible results, we have released our code at https://github.com/famous-blue-raincoat/AI_Ethics_Discourse. Results. Results indicate that safety and risk discourse dominate OpenAI's public communication and documentation, without applying academic and advocacy ethics frameworks or vocabularies. Conclusions. Implications for governance are presented, along with discussion of ethics-washing practices in industry.",
+                "authors": [
+                  "Melissa Wilfley",
+                  "Mengting Ai",
+                  "Madelyn Rose Sanfilippo"
+                ],
+                "published": "2026-01-23T07:26:45Z",
+                "updated": "2026-01-23T07:26:45Z",
+                "url": "http://arxiv.org/abs/2601.16513v1",
+                "pdf_url": "https://arxiv.org/pdf/2601.16513v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CY",
+                "categories": [
+                  "cs.CY"
+                ]
+              },
+              {
+                "arxiv_id": "2308.12400v1",
+                "title": "Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI",
+                "summary": "This paper presents a novel approach to scientific discovery using an artificial intelligence (AI) environment known as ChatGPT, developed by OpenAI. This is the first paper entirely generated with outputs from ChatGPT. We demonstrate how ChatGPT can be instructed through a gamification environment to define and benchmark hypothetical physical theories. Through this environment, ChatGPT successfully simulates the creation of a new improved model, called GPT$^4$, which combines the concepts of GPT in AI (generative pretrained transformer) and GPT in physics (generalized probabilistic theory). We show that GPT$^4$ can use its built-in mathematical and statistical capabilities to simulate and analyze physical laws and phenomena. As a demonstration of its language capabilities, GPT$^4$ also generates a limerick about itself. Overall, our results demonstrate the promising potential for human-AI collaboration in scientific discovery, as well as the importance of designing systems that effectively integrate AI's capabilities with human intelligence.",
+                "authors": [
+                  "Gerardo Adesso"
+                ],
+                "published": "2023-07-08T09:59:22Z",
+                "updated": "2023-07-08T09:59:22Z",
+                "url": "http://arxiv.org/abs/2308.12400v1",
+                "pdf_url": "https://arxiv.org/pdf/2308.12400v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.OH",
+                "categories": [
+                  "cs.OH"
+                ]
+              },
+              {
+                "arxiv_id": "2112.01298v2",
+                "title": "Meaningful human control: actionable properties for AI system development",
+                "summary": "How can humans remain in control of artificial intelligence (AI)-based systems designed to perform tasks autonomously? Such systems are increasingly ubiquitous, creating benefits - but also undesirable situations where moral responsibility for their actions cannot be properly attributed to any particular person or group. The concept of meaningful human control has been proposed to address responsibility gaps and mitigate them by establishing conditions that enable a proper attribution of responsibility for humans; however, clear requirements for researchers, designers, and engineers are yet inexistent, making the development of AI-based systems that remain under meaningful human control challenging. In this paper, we address the gap between philosophical theory and engineering practice by identifying, through an iterative process of abductive thinking, four actionable properties for AI-based systems under meaningful human control, which we discuss making use of two applications scenarios: automated vehicles and AI-based hiring. First, a system in which humans and AI algorithms interact should have an explicitly defined domain of morally loaded situations within which the system ought to operate. Second, humans and AI agents within the system should have appropriate and mutually compatible representations. Third, responsibility attributed to a human should be commensurate with that human's ability and authority to control the system. Fourth, there should be explicit links between the actions of the AI agents and actions of humans who are aware of their moral responsibility. We argue that these four properties will support practically-minded professionals to take concrete steps toward designing and engineering for AI systems that facilitate meaningful human control.",
+                "authors": [
+                  "Luciano Cavalcante Siebert",
+                  "Maria Luce Lupetti",
+                  "Evgeni Aizenberg",
+                  "Niek Beckers",
+                  "Arkady Zgonnikov",
+                  "Herman Veluwenkamp",
+                  "David Abbink",
+                  "Elisa Giaccardi",
+                  "Geert-Jan Houben",
+                  "Catholijn M. Jonker",
+                  "Jeroen van den Hoven",
+                  "Deborah Forster",
+                  "Reginald L. Lagendijk"
+                ],
+                "published": "2021-11-25T11:05:37Z",
+                "updated": "2022-05-19T15:28:01Z",
+                "url": "http://arxiv.org/abs/2112.01298v2",
+                "pdf_url": "https://arxiv.org/pdf/2112.01298v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.CY",
+                "categories": [
+                  "cs.CY",
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-06-02T16:32:50"
+    }
+  ],
+  "source": "streamlit_app"
+}

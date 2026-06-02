@@ -1,0 +1,107 @@
+tools:
+  - name: clarify
+    description: "Ask the user for one missing piece of information or for yes/no confirmation. Use when a required handle, URL, choice, or publish confirmation is missing."
+    parameters:
+      type: object
+      properties:
+        question: {type: string, default: "", description: "Short question asking exactly for the missing information."}
+        response_type: {type: string, enum: [text, yes_no, choice], default: text, description: "Use text for missing handle/URL, yes_no for publish confirmation."}
+        options: {type: array, default: [], items: {type: string}, description: "Options for choice questions."}
+      required: [question]
+
+  - name: timeline
+    description: "Fetch recent tweets/posts from one specific account. Use for posts from a named person or handle, such as Sam Altman -> sama, Elon Musk -> elonmusk, Andrej Karpathy -> karpathy. Do not use for topic search."
+    parameters:
+      type: object
+      properties:
+        screenname: {type: string, default: "", description: "Account handle without @."}
+        limit: {type: integer, default: 5, description: "Number of recent posts requested."}
+      required: [screenname]
+
+  - name: social_search
+    description: "Search tweets/posts by topic, keyword, company, product, or event. Use for what people are saying about a topic. Do not use for one account's timeline."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Topic or keyword to search for."}
+        search_type: {type: string, enum: [Latest, Top], default: Latest, description: "Use Top for popular/top requests; otherwise Latest."}
+        limit: {type: integer, default: 5, description: "Number of posts requested."}
+      required: [query]
+
+  - name: lookup
+    description: "Search the public web. Use for current information, news, or general web research. Use topic=news for news requests and set timeframe from the user's time phrase."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Focused web query."}
+        topic: {type: string, enum: [general, news], default: general, description: "Use news for current-events/news requests."}
+        timeframe: {type: string, enum: [day, week, month, year], default: week, description: "today -> day; this week -> week; this month -> month."}
+        max_results: {type: integer, default: 5, description: "Number of results requested."}
+      required: [query]
+
+  - name: fetch
+    description: "Read the content of a specific URL provided by the user. Use fetch instead of lookup when a URL is present. If multiple URLs are present, call fetch once per URL."
+    parameters:
+      type: object
+      properties:
+        url: {type: string, default: "", description: "Exact URL from the user."}
+      required: [url]
+
+  - name: format
+    description: "Format already-collected items into a markdown digest, briefing, bullets, or thread. This tool does not search or fetch."
+    parameters:
+      type: object
+      properties:
+        items:
+          type: array
+          default: []
+          items:
+            type: object
+            properties:
+              title: {type: string}
+              url: {type: string}
+              source: {type: string}
+              summary: {type: string}
+              section: {type: string}
+        template: {type: string, enum: [brief, sections, bullets, thread, daily_ai_vn], default: sections}
+        headline: {type: string, default: ""}
+      required: [items, template]
+
+  - name: send
+    description: "Post text to the configured Telegram channel. External action. Only call after the latest user turn explicitly confirms sending the exact content."
+    parameters:
+      type: object
+      properties:
+        text: {type: string, default: "", description: "Exact text to send."}
+        confirmed: {type: boolean, default: false, description: "Must be true only after explicit confirmation."}
+      required: [text]
+
+  - name: policy
+    description: "Search internal company policy markdown. Use for company rules, source citation, data privacy, external publishing, tool usage, or AI research workflow."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Policy question or keywords."}
+        policy_area: {type: string, enum: [all, ai_research, source_citation, data_privacy, external_publishing, tool_usage], default: all}
+        top_k: {type: integer, default: 3}
+      required: [query]
+
+  - name: papers
+    description: "Search arXiv for scientific papers, research papers, and preprints."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Research topic or arXiv search query."}
+        max_results: {type: integer, default: 5}
+        sort_by: {type: string, enum: [relevance, lastUpdatedDate, submittedDate], default: relevance}
+      required: [query]
+
+  - name: paper_text
+    description: "Download an arXiv PDF and extract text. Use when the user gives an arXiv ID or URL and asks to read or extract paper text."
+    parameters:
+      type: object
+      properties:
+        arxiv_url: {type: string, default: "", description: "arXiv ID or URL."}
+        max_pages: {type: integer, default: 5}
+        max_chars: {type: integer, default: 8000}
+      required: [arxiv_url]

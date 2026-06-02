@@ -1,7 +1,283 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "description": "Team-authored cases for additional coverage. Includes 5 single-turn cases and 5 multi-turn cases.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G01_missing_account_for_timeline",
+      "phase": "B",
+      "suite": "group",
+      "query": "Lay 7 tweet moi nhat giup minh, nhung minh chua noi account nao.",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "A timeline request without a target account should ask for the missing account instead of guessing."
+      }
+    },
+    {
+      "id": "G02_missing_url_for_article",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tom tat bai viet nay cho minh, nhung minh se gui link sau.",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "A request to summarize an article without a URL should ask for the URL."
+      }
+    },
+    {
+      "id": "G03_two_urls_parallel_fetch",
+      "phase": "B",
+      "suite": "group",
+      "query": "Doc va tom tat hai trang nay: https://openai.com/research/ va https://www.anthropic.com/research",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/research/"
+            }
+          },
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://www.anthropic.com/research"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Two explicit URLs should produce two fetch calls, not a web search."
+      }
+    },
+    {
+      "id": "G04_top_social_search",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tim cac tweet top pho bien nhat ve AI agents.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI agents",
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Popular/top social search should use social_search with search_type=Top."
+      }
+    },
+    {
+      "id": "G05_source_audit_before_publish",
+      "phase": "B",
+      "suite": "group",
+      "query": "Kiem tra ban tin nay da du citation/source de publish chua: OpenAI ra model moi. Anthropic cap nhat Claude. Chua co link nguon.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "source_audit",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Citation/source readiness checks should route to the custom source_audit tool."
+      }
+    },
+    {
+      "id": "G06_multiturn_fill_account_keep_limit",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lay 5 tweet moi nhat giup minh."
+        },
+        {
+          "role": "user",
+          "content": "Cua Sam Altman nhe."
+        },
+        {
+          "role": "user",
+          "content": "Giu dung 5 tweet."
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn context should carry the requested limit and fill the missing account."
+      }
+    },
+    {
+      "id": "G07_multiturn_correct_account",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tweet moi nhat cua Sam Altman."
+        },
+        {
+          "role": "user",
+          "content": "A nham, doi sang Andrej Karpathy."
+        },
+        {
+          "role": "user",
+          "content": "Lay 4 tweet moi nhat."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "karpathy",
+              "limit": 4
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Latest correction should override the earlier account."
+      }
+    },
+    {
+      "id": "G08_multiturn_correct_limit",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lay 10 tweet moi nhat cua Elon Musk."
+        },
+        {
+          "role": "user",
+          "content": "Thoi lay 3 tweet thoi."
+        },
+        {
+          "role": "user",
+          "content": "Van cua Elon Musk nhe."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Latest limit correction should override the earlier limit."
+      }
+    },
+    {
+      "id": "G09_multiturn_switch_social_to_web",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Moi nguoi noi gi ve OpenAI tren Twitter?"
+        },
+        {
+          "role": "user",
+          "content": "Bo Twitter di, tim tren web news."
+        },
+        {
+          "role": "user",
+          "content": "Van giu chu de OpenAI trong tuan nay."
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "OpenAI",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "A later turn can switch the tool from social search to web news while preserving the topic."
+      }
+    },
+    {
+      "id": "G10_multiturn_confirm_send",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Dang len Telegram noi dung: AI briefing da san sang."
+        },
+        {
+          "role": "user",
+          "content": "Toi xac nhan, gui dung noi dung do."
+        },
+        {
+          "role": "user",
+          "content": "Gui ngay bay gio."
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "send",
+            "args": {
+              "confirmed": true
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "After explicit confirmation in context, the agent may call send with confirmed=true."
+      }
+    }
+  ]
 }
