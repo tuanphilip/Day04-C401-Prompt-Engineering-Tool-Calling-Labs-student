@@ -6,7 +6,7 @@
 
 ## Team
 
-- Team: Research Agent Team
+- Team: Nhóm 5/Zone 12
 - Members:
   - Nguyễn Danh Thành - 2A202600581
   - Vũ Tuấn Phương - 2A202600772
